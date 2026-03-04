@@ -6,6 +6,7 @@
     <uses-sdk tools:overrideLibrary="org.dmfs.android.bolts" />
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="org.dmfs.permission.READ_TASKS" />
     <uses-permission android:name="org.dmfs.permission.WRITE_TASKS" />
     <uses-permission
