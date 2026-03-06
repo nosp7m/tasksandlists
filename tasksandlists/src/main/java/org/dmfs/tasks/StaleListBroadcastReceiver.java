@@ -104,9 +104,9 @@ public final class StaleListBroadcastReceiver extends BroadcastReceiver
                     nm.notify("stale_list_broadacast", 0,
                             new Notification.Builder(context, "provider_messages")
                                     .setContentText(notificationDescription)
-                                    .setContentIntent(PendingIntent.getActivity(context, 0, accountRequestIntent, PendingIntent.FLAG_UPDATE_CURRENT))
+                                    .setContentIntent(PendingIntent.getActivity(context, 0, accountRequestIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE))
                                     .addAction(new Notification.Action.Builder(null, "Grant",
-                                            PendingIntent.getActivity(context, 0, accountRequestIntent, PendingIntent.FLAG_UPDATE_CURRENT)).build())
+                                            PendingIntent.getActivity(context, 0, accountRequestIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE)).build())
                                     .setColor(new AttributeColor(theme, org.dmfs.android.sync.opentasks_theme.R.attr.colorPrimary).argb())
                                     .setColorized(true)
                                     .setSmallIcon(org.dmfs.tasks.provider.R.drawable.ic_24_opentasks)

@@ -55,6 +55,6 @@ public final class CancelDelayedAction implements TaskAction
                         context,
                         (int) ContentUris.parseId(taskUri),
                         new Intent(context, ActionReceiver.class).setAction(mAction).setData(taskUri),
-                        PendingIntent.FLAG_UPDATE_CURRENT));
+                        PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE));
     }
 }

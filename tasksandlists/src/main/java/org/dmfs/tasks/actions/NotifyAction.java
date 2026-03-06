@@ -130,12 +130,12 @@ public final class NotifyAction implements TaskAction
                 new Intent(context, ActionReceiver.class).setAction(
                         pin ? ActionService.ACTION_OPEN_TASK : ActionService.ACTION_OPEN_TASK_CANCEL_NOTIFICATION)
                         .setData(taskUri),
-                PendingIntent.FLAG_UPDATE_CURRENT));
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE));
 
         // make sure we un-persist the notification when its cancelled
         builder.setDeleteIntent(PendingIntent.getBroadcast(context, notificationId,
                 new Intent(context, ActionReceiver.class).setAction(ActionService.ACTION_REMOVE_NOTIFICATION).setData(taskUri),
-                PendingIntent.FLAG_UPDATE_CURRENT));
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE));
 
         if (!new TaskIsClosed(data).value())
         {
@@ -147,7 +147,7 @@ public final class NotifyAction implements TaskAction
                                     context,
                                     1,
                                     new Intent(context, ActionReceiver.class).setAction(ActionService.ACTION_COMPLETE).setData(taskUri),
-                                    PendingIntent.FLAG_UPDATE_CURRENT)));
+                                    PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE)));
 
             if (new TaskDateTime(TaskContract.Tasks.DUE, data).isPresent())
             {
@@ -156,7 +156,7 @@ public final class NotifyAction implements TaskAction
                                 context,
                                 1,
                                 new Intent(context, ActionReceiver.class).setAction(ActionService.ACTION_DEFER_1D).setData(taskUri),
-                                PendingIntent.FLAG_UPDATE_CURRENT)));
+                                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE)));
             }
         }
 
@@ -169,7 +169,7 @@ public final class NotifyAction implements TaskAction
                             context,
                             1,
                             new Intent(context, ActionReceiver.class).setAction(ActionService.ACTION_UNPIN).setData(taskUri),
-                            PendingIntent.FLAG_UPDATE_CURRENT)));
+                            PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE)));
         }
         builder.setOnlyAlertOnce(!mRepost);
         builder.setOngoing(pin);

@@ -156,14 +156,14 @@ public class TaskListWidgetProvider extends AppWidgetProvider
             /** Add pending Intent to start the Tasks app when the title is clicked */
             Intent tasksAppIntent = new Intent(context, TaskListActivity.class);
             tasksAppIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            PendingIntent taskAppPI = PendingIntent.getActivity(context, 0, tasksAppIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent taskAppPI = PendingIntent.getActivity(context, 0, tasksAppIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             widget.setOnClickPendingIntent(android.R.id.button1, taskAppPI);
 
             /** Add a pending Intent to start new Task Activity on the new Task Button */
             Intent editTaskIntent = new Intent(context, TaskListWidgetProvider.class);
             editTaskIntent.setAction(ACTION_CREATE_TASK);
             editTaskIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
-            PendingIntent newTaskPI = PendingIntent.getBroadcast(context, appWidgetIds[i], editTaskIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent newTaskPI = PendingIntent.getBroadcast(context, appWidgetIds[i], editTaskIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
             widget.setOnClickPendingIntent(android.R.id.button2, newTaskPI);
 
             /** Set the {@link RemoteViewsService } subclass as the adapter for the {@link ListView} in the widget. */
@@ -171,7 +171,7 @@ public class TaskListWidgetProvider extends AppWidgetProvider
 
             Intent detailIntent = new Intent(Intent.ACTION_VIEW);
             detailIntent.putExtra(TaskListActivity.EXTRA_FORCE_LIST_SELECTION, true);
-            PendingIntent clickPI = PendingIntent.getActivity(context, 0, detailIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent clickPI = PendingIntent.getActivity(context, 0, detailIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
             widget.setPendingIntentTemplate(R.id.task_list_widget_lv, clickPI);
 

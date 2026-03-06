@@ -38,6 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity
     private SharedPreferences mPrefs;
 
     private Permission mGetAccountsPermission;
+    private Permission mPostNotificationsPermission;
 
 
     @Override
@@ -46,6 +47,10 @@ public abstract class BaseActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         mGetAccountsPermission = new BasicAppPermissions(this).forName(Manifest.permission.GET_ACCOUNTS);
+        if (Build.VERSION.SDK_INT >= 33)
+        {
+            mPostNotificationsPermission = new BasicAppPermissions(this).forName(Manifest.permission.POST_NOTIFICATIONS);
+        }
 
         mPrefs = getSharedPreferences(getPackageName() + ".sharedPrefences", 0);
 
@@ -67,6 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity
     {
         super.onResume();
         requestMissingGetAccountsPermission();
+        requestMissingPostNotificationsPermission();
     }
 
 
@@ -92,6 +98,16 @@ public abstract class BaseActivity extends AppCompatActivity
         if (Build.VERSION.SDK_INT < 26 && !mGetAccountsPermission.isGranted())
         {
             PermissionRequestDialogFragment.newInstance(mGetAccountsPermission.isRequestable(this)).show(getSupportFragmentManager(), "permission-dialog");
+        }
+    }
+
+
+    private void requestMissingPostNotificationsPermission()
+    {
+        /* POST_NOTIFICATIONS is required on Android 13 (API 33) and above to show any notifications. */
+        if (Build.VERSION.SDK_INT >= 33 && mPostNotificationsPermission != null && !mPostNotificationsPermission.isGranted())
+        {
+            PermissionRequestDialogFragment.newInstance(mPostNotificationsPermission.isRequestable(this)).show(getSupportFragmentManager(), "notification-permission-dialog");
         }
     }
 

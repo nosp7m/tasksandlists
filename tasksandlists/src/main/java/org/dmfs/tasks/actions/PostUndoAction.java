@@ -72,7 +72,7 @@ public final class PostUndoAction implements TaskAction
                         context,
                         id,
                         new Intent(context, ActionReceiver.class).setData(taskUri).setAction(ActionService.ACTION_UNDO_COMPLETE),
-                        PendingIntent.FLAG_CANCEL_CURRENT));
+                        PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE));
         builder.setContent(undoView);
 
         // When the notification is cleared, we perform the destructive action
@@ -80,7 +80,7 @@ public final class PostUndoAction implements TaskAction
                 context,
                 id,
                 new Intent(context, ActionReceiver.class).setData(taskUri).setAction(ActionService.ACTION_FINISH_COMPLETE),
-                PendingIntent.FLAG_CANCEL_CURRENT));
+                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE));
         builder.setShowWhen(false);
         builder.setGroup(GROUP_UNDO);
         builder.setColor(new AttributeColor(new ContextThemeWrapper(context, org.dmfs.android.sync.opentasks_theme.R.style.OpenTasks_Theme_Default), org.dmfs.android.sync.opentasks_theme.R.attr.colorPrimary).argb());
