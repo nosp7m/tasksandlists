@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Dark mode overrides for large-screen landscape (legacy qualifier) edit/view pane styles.
+         Mirrors values-sw600dp-land-night/styles.xml for devices using the older
+         'large' screen-size qualifier instead of smallestWidth. -->
+
+    <style name="edit_detail_ll">
+        <item name="android:background">#FF1E1E1E</item>
+        <item name="android:layout_width">600dp</item>
+    </style>
+
+</resources>

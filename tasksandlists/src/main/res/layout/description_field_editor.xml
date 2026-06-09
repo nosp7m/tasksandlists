@@ -25,6 +25,7 @@
                 android:background="@drawable/selectable_background_white"
                 android:clickable="true"
                 android:drawableStart="@drawable/ic_24_plus_black50"
+                android:drawableTint="?android:attr/textColorPrimary"
                 android:drawablePadding="8dp"
                 android:focusable="true"
                 android:gravity="center_vertical"

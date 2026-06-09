@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Dark mode overrides for large-screen (legacy qualifier) edit/view pane styles.
+         Mirrors values-sw600dp-night/styles.xml for devices using the older
+         'large' screen-size qualifier instead of smallestWidth. -->
+
+    <style name="edit_detail_pane">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@color/light_gray</item>
+    </style>
+
+    <style name="edit_detail_ll">
+        <item name="android:background">#FF1E1E1E</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+</resources>

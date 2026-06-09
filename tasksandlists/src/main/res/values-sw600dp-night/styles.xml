@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Dark mode overrides for tablet (sw600dp) edit/view pane styles.
+         Without this file, values-sw600dp/styles.xml takes priority over
+         values-night/styles.xml (smallest-width qualifier beats night-mode
+         qualifier in Android's resource selection algorithm), causing the
+         white inner-card background to appear even in dark mode. -->
+
+    <style name="edit_detail_pane">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@color/light_gray</item>
+    </style>
+
+    <style name="edit_detail_ll">
+        <item name="android:background">#FF1E1E1E</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+</resources>

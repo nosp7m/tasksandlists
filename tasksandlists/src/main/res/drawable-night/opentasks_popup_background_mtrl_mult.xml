@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Dark-mode replacement for the light 9-patch PNG
+    opentasks_popup_background_mtrl_mult.9.png used as the background of
+    the task-detail container in the two-pane tablet layouts.
+
+    In Android resource resolution, the 'night' UI-mode qualifier (priority 13)
+    outranks screen-density qualifiers like 'hdpi' (priority 14), so this file
+    is chosen over the PNG files in drawable-hdpi/, drawable-mdpi/, etc.
+    whenever dark mode is active, giving the right-hand detail pane a dark
+    surface background instead of the white card shadow bitmap.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FF202020"/>
+</shape>

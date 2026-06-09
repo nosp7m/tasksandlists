@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Dark mode overrides for tablet landscape (sw600dp-land) edit/view pane styles.
+         The landscape override widens edit_detail_ll to 600dp; this file provides
+         the dark-mode version so the white background is not shown in dark mode. -->
+
+    <style name="edit_detail_ll">
+        <item name="android:background">#FF1E1E1E</item>
+        <item name="android:layout_width">600dp</item>
+    </style>
+
+</resources>
