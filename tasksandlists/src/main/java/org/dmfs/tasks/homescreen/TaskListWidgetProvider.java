@@ -34,6 +34,7 @@ import org.dmfs.provider.tasks.AuthorityUtil;
 import org.dmfs.tasks.EditTaskActivity;
 import org.dmfs.tasks.R;
 import org.dmfs.tasks.TaskListActivity;
+import org.dmfs.tasks.ViewTaskActivity;
 import org.dmfs.tasks.contract.TaskContract.TaskLists;
 import org.dmfs.tasks.contract.TaskContract.Tasks;
 import org.dmfs.tasks.model.ContentSet;
@@ -53,6 +54,7 @@ public class TaskListWidgetProvider extends AppWidgetProvider
 {
     private final static String TAG = "TaskListWidgetProvider";
     public static String ACTION_CREATE_TASK = "CreateTask";
+    public static String ACTION_VIEW_TASK = "org.dmfs.tasks.action.WIDGET_VIEW_TASK";
 
 
     /*
@@ -71,6 +73,20 @@ public class TaskListWidgetProvider extends AppWidgetProvider
         if (action.equals(Intent.ACTION_PROVIDER_CHANGED))
         {
             appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.task_list_widget_lv);
+        }
+        else if (action.equals(ACTION_VIEW_TASK))
+        {
+            // A task item in the widget list was tapped. The tapped task's URI is delivered
+            // via the fill-in intent's data. Extract it and open the ViewTaskActivity.
+            Uri taskUri = intent.getData();
+            if (taskUri != null)
+            {
+                // Launch the task view in its own separate task rooted at ViewTaskActivity so that
+                // pressing back returns to the homescreen (where the widget lives) instead of the app.
+                Intent viewIntent = new Intent(Intent.ACTION_VIEW, taskUri, context, ViewTaskActivity.class);
+                viewIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+                context.startActivity(viewIntent);
+            }
         }
         else if (action.equals(ACTION_CREATE_TASK))
         {
@@ -169,9 +185,11 @@ public class TaskListWidgetProvider extends AppWidgetProvider
             /** Set the {@link RemoteViewsService } subclass as the adapter for the {@link ListView} in the widget. */
             widget.setRemoteAdapter(R.id.task_list_widget_lv, remoteServiceIntent);
 
-            Intent detailIntent = new Intent(Intent.ACTION_VIEW);
-            detailIntent.putExtra(TaskListActivity.EXTRA_FORCE_LIST_SELECTION, true);
-            PendingIntent clickPI = PendingIntent.getActivity(context, 0, detailIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+            // Route task item clicks through this provider's onReceive (same reliable pattern as the "+" button).
+            // The tapped task's URI is supplied via the per-item fill-in intent.
+            Intent detailIntent = new Intent(context, TaskListWidgetProvider.class);
+            detailIntent.setAction(ACTION_VIEW_TASK);
+            PendingIntent clickPI = PendingIntent.getBroadcast(context, appWidgetIds[i], detailIntent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_MUTABLE);
 
             widget.setPendingIntentTemplate(R.id.task_list_widget_lv, clickPI);
 
