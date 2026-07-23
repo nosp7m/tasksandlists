@@ -30,7 +30,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dip"
                 android:layout_marginRight="5sp"
-                android:textColor="@color/dark_gray"
+                android:textColor="?attr/android:textColorPrimaryInverse"
                 android:textIsSelectable="false"
                 android:textSize="14sp"/>
 
@@ -45,7 +45,7 @@
                 android:layout_toRightOf="@id/task_list_color"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:textColor="@android:color/white"
+                android:textColor="?attr/android:textColorPrimaryInverse"
                 android:textIsSelectable="false"
                 android:textSize="14sp"/>
     </RelativeLayout>

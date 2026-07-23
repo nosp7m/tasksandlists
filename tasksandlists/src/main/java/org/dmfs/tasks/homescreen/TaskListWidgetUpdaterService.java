@@ -26,6 +26,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
+import android.util.TypedValue;
 import androidx.loader.content.CursorLoader;
 import android.text.format.Time;
 import android.widget.RemoteViews;
@@ -202,6 +203,24 @@ public class TaskListWidgetUpdaterService extends RemoteViewsService
          *
          * @see android.widget.RemoteViewsService.RemoteViewsFactory#getViewAt(int)
          */
+        
+        /**
+         * Resolves the primary text color for widgets from the current theme.
+         * This color is used for normal (non-overdue) task dates to match the task title color.
+         *
+         * @return the theme-aware primary text color suitable for display on widget backgrounds
+         */
+        private int getThemeAwarePrimaryTextColor()
+        {
+            TypedValue typedValue = new TypedValue();
+            if (mContext.getTheme().resolveAttribute(android.R.attr.textColorPrimaryInverse, typedValue, true))
+            {
+                return typedValue.data;
+            }
+            // Fallback to white if the attribute cannot be resolved
+            return 0xFFFFFFFF;
+        }
+        
         @Override
         public RemoteViews getViewAt(int position)
         {
@@ -241,7 +260,8 @@ public class TaskListWidgetUpdaterService extends RemoteViewsService
                 }
                 else
                 {
-                    row.setTextColor(android.R.id.text1, mResources.getColor(R.color.lighter_gray));
+                    // Use theme-aware color that matches the task title
+                    row.setTextColor(android.R.id.text1, getThemeAwarePrimaryTextColor());
                 }
             }
             else
