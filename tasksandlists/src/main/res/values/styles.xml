@@ -279,7 +279,7 @@
     </style>
 
     <style name="task_list_overdue_text">
-        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textColor">@color/holo_red_light</item>
         <item name="android:textStyle">bold</item>
     </style>
 
