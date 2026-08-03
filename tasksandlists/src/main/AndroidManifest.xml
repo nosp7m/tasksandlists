@@ -400,6 +400,16 @@
     </application>
 
     <queries>
+        <!-- Visibility of task sync apps (e.g. DAVx5): required since Android 11 so that
+             getSyncAdapterTypes()/getAuthenticatorTypes() return them; without this no
+             Model can be built for synced account types and their tasks can't be shown
+             or edited. -->
+        <intent>
+            <action android:name="android.content.SyncAdapter" />
+        </intent>
+        <intent>
+            <action android:name="android.accounts.AccountAuthenticator" />
+        </intent>
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="http" />
