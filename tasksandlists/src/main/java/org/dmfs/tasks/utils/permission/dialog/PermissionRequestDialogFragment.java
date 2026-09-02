@@ -16,13 +16,13 @@
 
 package org.dmfs.tasks.utils.permission.dialog;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 import androidx.fragment.app.DialogFragment;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -38,20 +38,25 @@ import org.dmfs.tasks.utils.permission.utils.AppSettingsIntent;
 /**
  * @author Gabor Keszthelyi
  */
-// TODO Parameterize with args for permission name, title, message, button labels. Class name to DismissiblePermissionRequestDialogFragment?
 public final class PermissionRequestDialogFragment extends DialogFragment
 {
 
     private static final String KEY_IS_NORMALLY_REQUESTABLE = "org.dmfs.tasks.permission.isRequestable";
+    private static final String KEY_PERMISSION_NAME = "org.dmfs.tasks.permission.name";
+    private static final String KEY_MESSAGE_RES = "org.dmfs.tasks.permission.messageRes";
+    private static final String KEY_IS_DISMISSIBLE = "org.dmfs.tasks.permission.isDismissible";
 
 
-    public static DialogFragment newInstance(boolean isNormallyRequestable)
+    public static DialogFragment newInstance(String permissionName, boolean isNormallyRequestable, @StringRes int messageRes, boolean isDismissible)
     {
         PermissionRequestDialogFragment dialogFragment = new PermissionRequestDialogFragment();
         Bundle args = new Bundle();
         args.putBoolean(KEY_IS_NORMALLY_REQUESTABLE, isNormallyRequestable);
+        args.putString(KEY_PERMISSION_NAME, permissionName);
+        args.putInt(KEY_MESSAGE_RES, messageRes);
+        args.putBoolean(KEY_IS_DISMISSIBLE, isDismissible);
         dialogFragment.setArguments(args);
-        dialogFragment.setCancelable(false);
+        dialogFragment.setCancelable(isDismissible);
         return dialogFragment;
     }
 
@@ -60,10 +65,12 @@ public final class PermissionRequestDialogFragment extends DialogFragment
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
+        final String permissionName = getArguments().getString(KEY_PERMISSION_NAME);
+
         TextView messageView = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.dialog_message, null, false);
         messageView.setText(
                 Html.fromHtml(
-                        getString(R.string.opentasks_permission_request_dialog_getaccounts_message,
+                        getString(getArguments().getInt(KEY_MESSAGE_RES),
                                 new ManifestAppName(getContext()).value())));
         messageView.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -79,7 +86,7 @@ public final class PermissionRequestDialogFragment extends DialogFragment
                         @Override
                         public void onClick(DialogInterface dialog, int which)
                         {
-                            new BasicAppPermissions(getContext()).forName(Manifest.permission.GET_ACCOUNTS)
+                            new BasicAppPermissions(getContext()).forName(permissionName)
                                     .request().send(getActivity());
                         }
                     });
@@ -99,6 +106,11 @@ public final class PermissionRequestDialogFragment extends DialogFragment
                             }
                         }
                     });
+        }
+
+        if (getArguments().getBoolean(KEY_IS_DISMISSIBLE, false))
+        {
+            builder.setNegativeButton(R.string.opentasks_permission_request_dialog_button_not_now, null);
         }
 
         return builder.create();

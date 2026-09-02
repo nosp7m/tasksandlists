@@ -252,4 +252,13 @@
     <string name="opentasks_relative_time">%1$s %2$s</string>
     <string name="opentasks_date_time">%1$s %2$s</string>
 
+    <!-- Permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_getaccounts_title">権限が必要です</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_continue">続行</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_settings">設定を開く</string>
+
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">開始済み・期限当日・期限切れのタスクをお知らせするため、%s には通知の権限が必要です。</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">後で</string>
+
 </resources>

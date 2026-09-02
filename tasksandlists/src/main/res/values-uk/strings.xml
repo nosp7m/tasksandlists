@@ -241,4 +241,13 @@
 
     <string name="opentasks_date_time">%2$s %1$s</string>
 
+    <!-- Permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_getaccounts_title">Потрібен дозвіл</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Продовжити</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Відкрити налаштування</string>
+
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">Щоб нагадувати про розпочаті, поточні та прострочені завдання, додатку %s потрібен дозвіл надсилати сповіщення.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Не зараз</string>
+
 </resources>

@@ -311,6 +311,10 @@
     <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Continuer</string>
     <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Ouvrir les réglages</string>
 
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">Pour vous rappeler les tâches commencées, à échéance et en retard, %s a besoin de l\'autorisation d\'envoyer des notifications.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Pas maintenant</string>
+
     <!-- Format indicating a relative expression and time. Example: "4 hours ago, 11:00 am" -->
     <!-- Format indicating a date and time. Example: "23 Aug, 11:00 am" -->
     <string name="opentasks_date_time">%1$s à %2$s</string>

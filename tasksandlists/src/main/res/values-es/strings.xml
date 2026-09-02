@@ -252,4 +252,13 @@
     <!-- Incoming share -->
     <string name="share_as_task">Crear Tarea</string>
 
+    <!-- Permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_getaccounts_title">Permiso necesario</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Continuar</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Abrir ajustes</string>
+
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">Para recordarte las tareas iniciadas, vencidas y atrasadas, %s necesita permiso para enviar notificaciones.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Ahora no</string>
+
 </resources>

@@ -32,6 +32,10 @@
     <string name="task_title">Titel</string>
     <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Fortsätt</string>
     <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Öppna inställningar</string>
+
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">För att kunna påminna dig om påbörjade, förfallna och försenade uppgifter behöver %s behörighet att skicka aviseringar.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Inte nu</string>
     <string name="opentasks_share_footer">Delad via OpenTasks</string>
     <string name="opentasks_settings_notification_lights">Blinka lampa</string>
     <string name="opentasks_settings_notification_vibrate">Vibrera</string>

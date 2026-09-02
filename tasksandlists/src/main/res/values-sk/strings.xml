@@ -253,4 +253,13 @@
 
     <string name="opentasks_date_time">%2$s %1$s</string>
 
+    <!-- Permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_getaccounts_title">Vyžaduje sa povolenie</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Pokračovať</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Otvoriť nastavenia</string>
+
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">Aby vás aplikácia %s mohla upozorňovať na začaté úlohy a úlohy po termíne, potrebuje povolenie zobrazovať upozornenia.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Teraz nie</string>
+
 </resources>

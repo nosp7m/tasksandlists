@@ -268,6 +268,10 @@
     <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Ga verder</string>
     <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Open instellingen</string>
 
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">Om je te herinneren aan gestarte, verlopen en te late taken heeft %s toestemming nodig om meldingen te tonen.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Niet nu</string>
+
     <!-- Format indicating a relative expression and time. Example: "4 hours ago, 11:00 am" -->
     <string name="opentasks_relative_time">%1$s, %2$s</string>
     <!-- Format indicating a date and time. Example: "23 Aug, 11:00 am" -->

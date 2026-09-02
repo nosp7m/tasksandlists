@@ -23,6 +23,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.dmfs.android.retentionmagic.RetentionMagic;
+import org.dmfs.tasks.R;
 import org.dmfs.tasks.utils.permission.BasicAppPermissions;
 import org.dmfs.tasks.utils.permission.Permission;
 import org.dmfs.tasks.utils.permission.dialog.PermissionRequestDialogFragment;
@@ -95,9 +96,14 @@ public abstract class BaseActivity extends AppCompatActivity
     private void requestMissingGetAccountsPermission()
     {
         /* This is only a thing on Android SDK Level <26. The permission has been replaced with per-account visibility. */
-        if (Build.VERSION.SDK_INT < 26 && !mGetAccountsPermission.isGranted())
+        if (Build.VERSION.SDK_INT < 26 && !mGetAccountsPermission.isGranted()
+                && getSupportFragmentManager().findFragmentByTag("permission-dialog") == null)
         {
-            PermissionRequestDialogFragment.newInstance(mGetAccountsPermission.isRequestable(this)).show(getSupportFragmentManager(), "permission-dialog");
+            PermissionRequestDialogFragment.newInstance(
+                    mGetAccountsPermission.name(),
+                    mGetAccountsPermission.isRequestable(this),
+                    R.string.opentasks_permission_request_dialog_getaccounts_message,
+                    false).show(getSupportFragmentManager(), "permission-dialog");
         }
     }
 
@@ -105,9 +111,16 @@ public abstract class BaseActivity extends AppCompatActivity
     private void requestMissingPostNotificationsPermission()
     {
         /* POST_NOTIFICATIONS is required on Android 13 (API 33) and above to show any notifications. */
-        if (Build.VERSION.SDK_INT >= 33 && mPostNotificationsPermission != null && !mPostNotificationsPermission.isGranted())
+        /* Only ask as long as the permission can actually be requested, otherwise the user would be nagged on every resume. */
+        if (Build.VERSION.SDK_INT >= 33 && mPostNotificationsPermission != null && !mPostNotificationsPermission.isGranted()
+                && mPostNotificationsPermission.isRequestable(this)
+                && getSupportFragmentManager().findFragmentByTag("notification-permission-dialog") == null)
         {
-            PermissionRequestDialogFragment.newInstance(mPostNotificationsPermission.isRequestable(this)).show(getSupportFragmentManager(), "notification-permission-dialog");
+            PermissionRequestDialogFragment.newInstance(
+                    mPostNotificationsPermission.name(),
+                    true,
+                    R.string.opentasks_permission_request_dialog_notifications_message,
+                    true).show(getSupportFragmentManager(), "notification-permission-dialog");
         }
     }
 

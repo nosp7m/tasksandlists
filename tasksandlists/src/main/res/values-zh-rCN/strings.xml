@@ -273,6 +273,10 @@
     <string name="opentasks_permission_request_dialog_getaccounts_button_continue">继续</string>
     <string name="opentasks_permission_request_dialog_getaccounts_button_settings">打开设置</string>
 
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">为了提醒您已开始、即将到期和已逾期的任务，%s 需要发送通知的权限。</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">暂不</string>
+
     <!-- Format indicating a relative expression and time. Example: "4 hours ago, 11:00 am" -->
     <string name="opentasks_relative_time">%1$s, %2$s</string>
     <!-- Format indicating a date and time. Example: "23 Aug, 11:00 am" -->

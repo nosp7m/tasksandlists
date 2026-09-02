@@ -241,4 +241,13 @@
 
     <string name="opentasks_date_time">%1$s %2$s</string>
 
+    <!-- Permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_getaccounts_title">Permissão necessária</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Continuar</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Abrir configurações</string>
+
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">Para lembrar você das tarefas iniciadas, com vencimento e atrasadas, o %s precisa de permissão para enviar notificações.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Agora não</string>
+
 </resources>

@@ -241,4 +241,13 @@
 
     <string name="opentasks_date_time">%2$s %1$s</string>
 
+    <!-- Permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_getaccounts_title">Потребна је дозвола</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Настави</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Отвори подешавања</string>
+
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">Да би вас подсећао на започете, текуће и закаснеле задатке, %s треба дозволу за слање обавештења.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Не сада</string>
+
 </resources>

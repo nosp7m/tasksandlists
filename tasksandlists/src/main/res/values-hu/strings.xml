@@ -256,4 +256,13 @@
 
     <string name="opentasks_date_time">%1$s %2$s</string>
 
+    <!-- Permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_getaccounts_title">Engedély szükséges</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_continue">Folytatás</string>
+    <string name="opentasks_permission_request_dialog_getaccounts_button_settings">Beállítások megnyitása</string>
+
+    <!-- POST_NOTIFICATIONS permission requesting dialog: -->
+    <string name="opentasks_permission_request_dialog_notifications_message">Ahhoz, hogy emlékeztessen az elkezdett, esedékes és lejárt feladatokra, a(z) %s engedélyt igényel értesítések küldésére.</string>
+    <string name="opentasks_permission_request_dialog_button_not_now">Most nem</string>
+
 </resources>
